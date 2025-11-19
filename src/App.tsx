@@ -1,48 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import "./App.css";
+import "./index.css";
+import LoginForm from "./components/shared/loginForm";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    // Utilize classes Tailwind para estilização
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-indigo-500 p-4">
-      <div className="flex space-x-8 mb-8">
-        <a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer">
-          <img 
-            src={viteLogo} 
-            className="h-24 w-24 hover:drop-shadow-[0_0_2em_#646cffaa] transition-all duration-300 ease-in-out" 
-            alt="Vite logo" 
+    <div className="flex min-h-screen w-screen flex-col items-center justify-center gap-12 bg-[url('./assets/login-bg.png')] bg-cover bg-center bg-no-repeat">
+      <header className="flex flex-col items-center gap-2">
+        <p className="text-lg font-light text-gray-200 subpixel-antialiased">
+          Portal de Projetos
+        </p>
+        <h1 className="font-rift text-6xl font-bold text-green-400 subpixel-antialiased">
+          TRILHA TÉCNICO-GESTOR
+        </h1>
+      </header>
+
+      <main className="flex max-h-fit min-h-1/2 w-3/4 flex-col gap-12 rounded-lg bg-[#d9d9d9] p-8 shadow-lg md:w-1/2 lg:w-1/4">
+        <h2 className="text-center text-3xl font-bold text-black subpixel-antialiased">
+          LOGIN
+        </h2>
+
+        <LoginForm />
+
+        <div className="flex items-center justify-center">
+          <img
+            src="src\assets\cimatec-universidade-logo.png"
+            alt="SENAI CIMATEC"
+            className="mt-4 w-48"
           />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
-          <img 
-            src={reactLogo} 
-            className="h-24 w-24 hover:drop-shadow-[0_0_2em_#61dafb] transition-all duration-300 ease-in-out" 
-            alt="React logo" 
-          />
-        </a>
-      </div>
-      
-      <h1 className="text-5xl font-extrabold text-gray-800 mb-6">
-        Vite + React + <span className="text-blue-600">Tailwind 4</span>
-      </h1>
-      
-      <div className="bg-white p-8 rounded-xl shadow-lg flex flex-col items-center gap-4 border border-gray-200">
-        <button 
-          onClick={() => setCount((count) => count + 1)}
-          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-blue-300"
-        >
-          Count is {count}
-        </button>
-      </div>
-      
-      <p className="text-gray-600 text-sm mt-8">
-        Click on the logos to learn more
-      </p>
+        </div>
+      </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
