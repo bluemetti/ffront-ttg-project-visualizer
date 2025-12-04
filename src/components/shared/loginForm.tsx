@@ -3,6 +3,7 @@ import React, { useState } from "react";
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [loading, setLoading] = useState();
   const [error, setError] = useState<string | null>(null);
 
   function loginHandleSubmit(e: React.FormEvent) {
