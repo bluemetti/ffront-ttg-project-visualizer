@@ -1,21 +1,66 @@
 import React, { useState } from "react";
 
+// // Navegação após login não implementada
+import { useNavigate } from "react-router-dom";
+
+const API_URL_AUTH = import.meta.env.VITE_URL_BACKEND + "auth/login";
+
+interface LoginResponse {
+  access_token: string;
+  token_type: string;
+}
+
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [loading, setLoading] = useState();
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
-  function loginHandleSubmit(e: React.FormEvent) {
+  async function loginHandleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    setLoading(true);
     setError(null);
-
+    
     if (!email || !senha) {
       setError("Por favor, preencha o e-mail e a senha.");
+      setLoading(false);
       return;
     }
+    
+    try {
+      const response = await fetch(API_URL_AUTH, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, senha }),
+      });
+      
+      if (response.ok) {
+        const data: LoginResponse = await response.json();
+        const token = data.access_token;
+  
+        localStorage.setItem("authToken", token);
+        
 
-    console.log("Validação OK. Campos preenchidos:", { email, senha });
+
+        navigate("/orientador/dashboard/projetos");
+
+      } else {
+        const errorData = await response
+          .json()
+          .catch(() => ({ message: "Erro desconhecido" }));
+        const errorMessage =
+          errorData.detail || "Credenciais inválidas ou erro no servidor.";
+        setError(
+          `Falha na autenticação: ${errorMessage} (Status: ${response.status})`,
+        );
+      }
+    } catch (error) {
+      console.error("Erro de conexão/requisição:", error);
+      setError("Erro de conexão. Tente novamente mais tarde.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -65,10 +110,6 @@ export default function LoginForm() {
       </button>
 
       {error && <p className="text-center text-red-600">{error}</p>}
-
-      <p className="cursor-pointer text-center text-black underline hover:text-[#005EAD]">
-        Esqueceu a senha? ➔<a href=""></a>
-      </p>
     </form>
   );
 }
