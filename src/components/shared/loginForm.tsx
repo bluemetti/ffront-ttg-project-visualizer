@@ -43,7 +43,7 @@ export default function LoginForm() {
         
 
 
-        navigate("/orientador/dashboard/projetos");
+        navigate("/dashboard/projetos");
 
       } else {
         const errorData = await response
