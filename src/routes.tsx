@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 
-// Importe suas páginas
-import App from "./App.tsx"; // App agora será apenas a TELA DE LOGIN
+import App from "./App.tsx";
 import DashboardGeralProjetos from "./pages/dashboard_geral_projetos.tsx"; 
 import CadastroAluno from "./pages/cadastros/cadastro_aluno.tsx";
-import AboutTTG from "./components/shared/AboutTTG"; // Importe o About aqui
+import AboutTTG from "./components/shared/AboutTTG";
+import CadastroProjeto from "./pages/cadastros/cadastro_projeto.tsx";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: "/orientador/cadastro/aluno",
     element: <CadastroAluno />,
+  },
+    {
+    path: "/orientador/cadastro/projeto",
+    element: <CadastroProjeto />,
   },
 ]);
 
