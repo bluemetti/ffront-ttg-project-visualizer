@@ -48,13 +48,13 @@ export default function NavBarOrientador() {
       {/* Direita: botões de navegação */}
       <div className="flex items-center gap-3">
         <button
-          onClick={() => navigate("/orientador/dashboard/projetos")}
+          onClick={() => navigate("/dashboard/projetos")}
           className="cursor-pointer rounded-md border-none bg-[#f4511e] px-[18px] py-2 text-[15px] text-white transition-colors duration-200 hover:bg-[#d84315]"
         >
           Projetos
         </button>
         <button
-          onClick={() => navigate("/orientador/dashboard/alunos")}
+          onClick={() => navigate("/dashboard/alunos")}
           className="cursor-pointer rounded-md border-none bg-[#f4511e] px-[18px] py-2 text-[15px] text-white transition-colors duration-200 hover:bg-[#d84315]"
         >
           Alunos
@@ -92,6 +92,17 @@ export default function NavBarOrientador() {
                     className="w-full cursor-pointer px-4 py-2 text-left text-gray-800 hover:bg-gray-100"
                   >
                     Cadastrar Aluno
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      navigate("/orientador/cadastro/empresa");
+                      setDropdownOpen(false);
+                    }}
+                    className="w-full cursor-pointer px-4 py-2 text-left text-gray-800 hover:bg-gray-100"
+                  >
+                    Cadastrar Empresa
                   </button>
                 </li>
               </ul>
