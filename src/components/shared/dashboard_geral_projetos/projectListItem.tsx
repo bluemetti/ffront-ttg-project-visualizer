@@ -21,21 +21,14 @@ export default function ProjectListItem({ projeto }: ProjectListItemProps) {
     >
       <div className="grid flex-1 grid-cols-1 gap-3 md:grid-cols-3">
         
-        {/* Coluna 1: Nome e Líder */}
+        {/* Coluna 1: Nome do Projeto */}
         <div>
           <h2 className="mb-1 truncate text-lg font-bold text-[#003366]">
             {projeto.nome_projeto}
           </h2>
-          <p className="text-sm font-semibold text-black">
-            <span className="text-black">Líder: </span>
-            {/* CORREÇÃO 1: Trata o caso de null */}
-            <span className="font-normal">
-              {projeto.aluno_lider || "Não definido"}
-            </span>
-          </p>
         </div>
 
-        {/* Coluna 2: Fase, Status e Empresa */}
+        {/* Coluna 2: Fase e Status */}
         <div className="text-sm text-black">
           <p>
             <span className="font-semibold text-black">Fase: </span>
@@ -45,29 +38,14 @@ export default function ProjectListItem({ projeto }: ProjectListItemProps) {
             <span className="font-semibold text-black">Status: </span>
             {projeto.status}
           </p>
-          <p className="hidden truncate sm:block">
-            <span className="font-semibold text-black">Empresa: </span>
-            {projeto.empresa_demandante}
-          </p>
         </div>
 
-        {/* Coluna 3: Orientadores e Data */}
+        {/* Coluna 3: Orientador e Data */}
         <div className="text-sm text-black md:text-right">
           <p className="truncate">
-            <span className="font-semibold text-black">OET: </span>
+            <span className="font-semibold text-black">Orientador: </span>
             {projeto.orientador_tecnico}
           </p>
-
-          {/* CORREÇÃO 2: Verifica se orientador_gestao existe antes de mostrar */}
-          {projeto.orientador_gestao ? (
-            <p className="truncate">
-              <span className="font-semibold text-black">OGP: </span>
-              {projeto.orientador_gestao}
-            </p>
-          ) : (
-             // Opcional: Se quiser manter o espaço ocupado, deixe um <p> vazio ou com "N/A"
-             <p className="truncate text-gray-500 italic text-xs">Sem OGP</p>
-          )}
 
           <p>
             <span className="font-semibold text-black">Início: </span>
