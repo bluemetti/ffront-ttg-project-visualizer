@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 // Ajuste o caminho dos imports conforme sua estrutura de pastas
 import { type ProjetoAPI } from "../../../utils/buscarProjetos";

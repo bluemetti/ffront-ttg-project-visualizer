@@ -1,7 +1,6 @@
 import "./App.css";
 
 import LoginForm from "./components/shared/loginForm"; 
-import logoCimatec from "./assets/cimatec-universidade-logo.png";
 import { Link } from "react-router-dom";
 
 function App() {

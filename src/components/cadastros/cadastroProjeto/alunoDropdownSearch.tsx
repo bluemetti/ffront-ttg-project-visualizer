@@ -1,5 +1,5 @@
 // components/AlunoDropdownSearch.tsx
-import React, { useMemo, useState, useRef, useEffect } from "react";
+import { useMemo, useState, useRef, useEffect } from "react";
 import type { Aluno } from "../../../utils/types";
 
 interface Props {

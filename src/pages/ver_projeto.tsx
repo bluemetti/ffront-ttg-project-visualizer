@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import NavbarOrientador from "../components/orientador/navbar_orientador";
 import { getAuthHeaders } from "../utils/getAuthHeaders";

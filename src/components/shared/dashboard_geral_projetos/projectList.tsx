@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ProjectListItem from "./projectListItem";
 // Importe a tipagem que definimos no utils
 import { type ProjetoAPI } from "../../../utils/buscarProjetos";

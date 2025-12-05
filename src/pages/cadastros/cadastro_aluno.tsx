@@ -4,13 +4,9 @@ import CadastroAlunoForm from "../../components/cadastros/cadastroAlunoForm";
 import NavBarOrientador from "../../components/orientador/navbar_orientador";
 import { verificarAutenticacao } from "../../utils/verificarAutenticacao";
 
-const BACKEND_URL = import.meta.env.VITE_URL_BACKEND + "upload/alunos";
-
 export default function CadastroAluno() {
   const [autenticado, setAutenticado] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
-  const [arquivo, setArquivo] = useState<File | null>(null);
-  const [statusUpload, setStatusUpload] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -43,39 +39,6 @@ export default function CadastroAluno() {
   if (erro) {
     return <div className="mt-6 text-center text-red-600">{erro}</div>;
   }
-
-  const handleUpload = async () => {
-    if (!arquivo) {
-      setStatusUpload("Por favor, selecione um arquivo CSV antes de enviar.");
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append("file", arquivo);
-
-    try {
-      setStatusUpload("Enviando...");
-      const token = localStorage.getItem("authToken");
-
-      const response = await fetch(BACKEND_URL, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "ngrok-skip-browser-warning": "true",
-        },
-        body: formData,
-      });
-
-      if (!response.ok) {
-        throw new Error(`Erro ${response.status}: ${response.statusText}`);
-      }
-
-      setStatusUpload("Upload concluído com sucesso!");
-    } catch (error) {
-      console.error(error);
-      setStatusUpload("Falha ao enviar o arquivo. Tente novamente.");
-    }
-  };
 
   return (
     <div className="relative min-h-screen w-full bg-[url('./assets/login-bg.png')] bg-cover bg-center bg-no-repeat">

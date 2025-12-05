@@ -1,5 +1,4 @@
 // components/SimpleTeamManager.tsx
-import React, { useMemo } from "react";
 import AlunoDropdownSearch from "./alunoDropdownSearch"; // Mantenha o seu arquivo original
 import type { Aluno } from "../../../utils/types";
 
